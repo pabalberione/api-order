@@ -16,5 +16,5 @@ public class Ordenes {
     @Column(name = "total_price")
     private double totalPrice;
     @Column(name = "order_date")
-    private Date orderDate;
+    private String orderDate;
 }

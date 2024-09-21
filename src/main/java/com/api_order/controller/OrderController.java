@@ -15,9 +15,6 @@ import java.util.List;
 public class OrderController {
 
     @Autowired
-    IOrderRepository iOrderRepository;
-
-    @Autowired
     OrderService orderService;
 
     //Crear nueva orden
@@ -29,21 +26,21 @@ public class OrderController {
 
 
     //Obtener todas las ordenes
-    @GetMapping("/orders")
+    @GetMapping()
     public ResponseEntity<List<Ordenes>> getAllOrders(){
-        List<Ordenes>ordenes = iOrderRepository.findAll();
+        List<Ordenes>ordenes = orderService.getAllOrders();
         return ResponseEntity.ok(ordenes);
     }
 
     //Obtener una orden por ID
-    @GetMapping("/orders/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Ordenes>getOrderById(@PathVariable Integer id){
         Ordenes orden = orderService.getOrderById(id);
         return ResponseEntity.ok(orden);
     }
 
     //Actualizar una orden
-    @PutMapping("/orders/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Ordenes>updateOrderById(@PathVariable Integer id, @RequestBody Ordenes orderDetails){
         Ordenes orden = orderService.updateOrder(id, orderDetails);
         return ResponseEntity.ok(orden);
@@ -51,7 +48,7 @@ public class OrderController {
 
 
     //Eliminar una orden
-    @DeleteMapping("/orders/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void>deleteOrderById(@PathVariable Integer id){
         orderService.deleteOrder(id);
         return ResponseEntity.noContent().build();
