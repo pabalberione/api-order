@@ -1,10 +1,15 @@
 package com.api_order.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.util.Date;
 
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Entity
 public class Ordenes {
